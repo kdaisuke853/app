@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Lesson;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ReservationFactory extends Factory
@@ -14,8 +16,12 @@ class ReservationFactory extends Factory
     public function definition()
     {
         return [
-            'lesson_id'=>null,
-            'user_id'=>null,
+            'lesson_id'=> function(){
+                return Lesson::factory()->create()->id;
+            },
+            'user_id'=> function(){
+                return User::factory()->create()->id;
+            },
         ];
     }
 }

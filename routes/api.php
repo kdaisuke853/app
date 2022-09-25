@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Lesson\ReserveController;
+// use App\Http\Controllers\Lesson\ReserveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
+});
+
+Route::middleware('auth:sanctum')->group(function() {
+    Route::post('/lessons/{lesson}/reserve', ReserveController::class)->name('lessons.reserve');
+
 });

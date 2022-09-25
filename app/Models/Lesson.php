@@ -10,7 +10,7 @@ class Lesson extends Model
 {
     use HasFactory;
     
-    public function revervations(): HasMany
+    public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class);
     }
@@ -20,8 +20,8 @@ class Lesson extends Model
         return new VacancyLevel($this->remainingCount());
     }
 
-    private function remainingCount(): int
+    public function remainingCount(): int
     {
-        return $this->capacity - $this->revervations()->count();
+        return $this->capacity - $this->reservations()->count();
     }
 }
